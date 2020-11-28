@@ -142,7 +142,7 @@ if __name__ == '__main__':
 
     f = FileFinder(test_path, local=False)
     print("RES:")
-    f.namefilter(file_ext="zip", exclude_match=False)
+    f.namefilter(file_ext="zip", match=False)
     res = f.result()
     print(len(res))
     print("res:", res)
