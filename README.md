@@ -1,2 +1,2 @@
 # filefinder
-python funktion for searching files on pc
+python class for searching files on harddrive
