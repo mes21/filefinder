@@ -1,11 +1,13 @@
 
 
 import os
-
+import datetime
+from datetime import datetime as dt
 
 def ext_filter(check_str, matchlist, exclude=False):
 
     # add "." if missing
+    checks_list_ = []
     for ext in matchlist:
         if isinstance(ext, str):
             if ext[0] != ".":
@@ -59,7 +61,17 @@ def and_filter(check_str, matchlist, exclude=False):
                 return False
         return True
 
+def date_filter(check_file, date, date_pattern="%Y%m%d", os_date=True,  , exclude=False)
 
+
+    if isinstance(date, str):
+        date = dt.strptime(date, date_pattern)
+
+    elif isinstance(date, datetime.date):
+
+
+    elif:
+        return False
 
 
 

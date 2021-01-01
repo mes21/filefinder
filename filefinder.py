@@ -61,6 +61,31 @@ def strtolist(input_):
     else:
         return input_
 
+def maxsize_filter(file_, size, exclude=False):
+
+    if exclude is False:
+        if os.path.getsize(file_)/1000000 < size:
+            return True
+        else:
+            return False
+    else:
+        if os.path.getsize(file_)/1000000 < size:
+            return False
+        else:
+            return True
+
+def minsize_filter(file_, size, exclude=False):
+
+    if exclude is False:
+        if os.path.getsize(file_)/1000000 > size:
+            return True
+        else:
+            return False
+    else:
+        if os.path.getsize(file_)/1000000 > size:
+            return False
+        else:
+            return True            
 
 class FileFinder():
     def __init__(self, path, local=True, zip=False, bucket=None, aws_cred=None):
@@ -130,16 +155,19 @@ class FileFinder():
             self.match_list = [x for x in self.match_list if and_filter(os.path.split(x)[1], strtolist(file_and), exclude)]
 
 
-        #print("check_list", self.__getchecklist())
-        #self.match_list = check_list
+    def sizefilter(self, maxsize=None, minsize=None, exclude=False):
+        
+        if maxsize:
+            self.match_list = [x for x in self.match_list if maxsize_filter(x, maxsize, exclude)]
+
+        if minsize:
+            self.match_list = [x for x in self.match_list if minsize_filter(x, maxsize, exclude)]
 
 
+    def datefilter(self, date_older, date_newer, date_match, pattern_date="%Y%m%d", os_date=None, exclude=False):
+          
+        if os_date:
 
-    def sizefilter(self, maxsize=None, minsize=None):
-        pass
-
-    def datefilter(self, date, operator):
-        pass
 
     def resetfilter(self):
         self.match_list = self.raw_list.copy()
