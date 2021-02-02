@@ -165,9 +165,9 @@ class FileFinder():
 
 
     def datefilter(self, date_older, date_newer, date_match, pattern_date="%Y%m%d", os_date=None, exclude=False):
-          
+        # ToDo
         if os_date:
-
+            pass
 
     def resetfilter(self):
         self.match_list = self.raw_list.copy()
@@ -176,41 +176,3 @@ class FileFinder():
     def result(self):
         return self.match_list
 
-
-if __name__ == '__main__':
-
-    
-    test_path = r"C:\temp"
-    t1 = time.time()
-
-
-    
-
-
-    f = FileFinder(test_path, local=False)
-    f.namefilter(file_ext="zip", exclude=False)
-    res = f.result()
-    print(len(res))
-    print("res:", res)
-    
-    t2 = time.time()
-
-    print(t2-t1)
-
-
-
-
-
-    raw_list = []
-
-    t1 = time.time()
-    for root, dirs, files in os.walk(test_path):
-        for name in files:
-            raw_list.append(os.path.join(root, name))
-        for name in dirs:
-            if os.path.isfile(os.path.join(root, name)):
-                raw_list.append(os.path.join(root, name))
-
-    t2 = time.time()
-    print(len(raw_list))
-    print(t2-t1)

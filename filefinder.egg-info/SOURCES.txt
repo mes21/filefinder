@@ -1,0 +1,10 @@
+README.md
+setup.py
+filefinder/__init__.py
+filefinder/filefinder.py
+filefinder/test.py
+filefinder/version.py
+filefinder.egg-info/PKG-INFO
+filefinder.egg-info/SOURCES.txt
+filefinder.egg-info/dependency_links.txt
+filefinder.egg-info/top_level.txt
